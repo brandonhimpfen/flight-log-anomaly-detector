@@ -22,7 +22,6 @@ classifiers = [
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
   "Topic :: Scientific/Engineering",
-  "Topic :: Software Development :: Libraries",
   "Topic :: Utilities"
 ]
 
@@ -43,7 +42,7 @@ dev = [
 ]
 
 [project.scripts]
-uav-anomaly = "uav_anomaly_detector.cli:main"
+uav-anomaly = "flight_log_anomaly_detector:main"
 
 [project.urls]
 Homepage = "https://github.com/brandonhimpfen/flight-log-anomaly-detector"
@@ -51,18 +50,4 @@ Repository = "https://github.com/brandonhimpfen/flight-log-anomaly-detector"
 Issues = "https://github.com/brandonhimpfen/flight-log-anomaly-detector/issues"
 
 [tool.setuptools]
-package-dir = {"" = "src"}
-
-[tool.setuptools.packages.find]
-where = ["src"]
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-addopts = "-q"
-
-[tool.ruff]
-line-length = 100
-src = ["src", "tests"]
-
-[tool.ruff.lint]
-select = ["E", "F", "I", "B"]
+py-modules = ["flight_log_anomaly_detector"]
