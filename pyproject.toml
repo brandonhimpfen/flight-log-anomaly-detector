@@ -1,0 +1,68 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "uav-anomaly-detector"
+version = "0.1.0"
+description = "Detect anomalies in UAV telemetry logs using Hampel filtering, optional STL decomposition, and GPS jump checks."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+  { name = "Brandon Himpfen" }
+]
+keywords = ["uav", "drone", "telemetry", "anomaly-detection", "hampel", "stl", "gps"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering",
+  "Topic :: Software Development :: Libraries",
+  "Topic :: Utilities"
+]
+
+dependencies = [
+  "numpy>=1.24",
+  "pandas>=2.0"
+]
+
+[project.optional-dependencies]
+stl = [
+  "statsmodels>=0.14"
+]
+dev = [
+  "pytest>=8.0",
+  "ruff>=0.5.0",
+  "build>=1.2.1",
+  "twine>=5.1.1"
+]
+
+[project.scripts]
+uav-anomaly = "uav_anomaly_detector.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/brandonhimpfen/flight-log-anomaly-detector"
+Repository = "https://github.com/brandonhimpfen/flight-log-anomaly-detector"
+Issues = "https://github.com/brandonhimpfen/flight-log-anomaly-detector/issues"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B"]
